@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "proxy.fullname" . }}
+  labels:
+    {{- include "proxy.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: v2ray-port
+      protocol: TCP
+      name: v2ray-port
+  selector:
+    {{- include "proxy.selectorLabels" . | nindent 4 }}
