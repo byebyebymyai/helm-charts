@@ -15,15 +15,6 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
-serviceAccount:
-  # Specifies whether a service account should be created
-  create: true
-  # Annotations to add to the service account
-  annotations: {}
-  # The name of the service account to use.
-  # If not set and create is true, a name is generated using the fullname template
-  name: ""
-
 podAnnotations: {}
 
 podSecurityContext: {}
@@ -38,8 +29,8 @@ securityContext: {}
   # runAsUser: 1000
 
 service:
-  type: ClusterIP
-  port: 1080
+  type: NodePort
+  port: 31080
 
 ingress:
   enabled: false
@@ -52,7 +43,7 @@ ingress:
   hosts:
     - host: ""
       paths:
-        - path: /
+        - path: /ray
           pathType: ImplementationSpecific
   tls:
    - secretName: v2ray-tls
@@ -75,14 +66,10 @@ autoscaling:
   enabled: false
   minReplicas: 1
   maxReplicas: 100
-  targetCPUUtilizationPercentage: 90
-  # targetMemoryUtilizationPercentage: 90
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
 
-nodeSelector: {}
-
-tolerations: []
-
-affinity: {}
-
-app:
-  uuid: "b831381d-6324-4d53-ad4f-8cda48b30811"
+v2ray:
+  streamSettings:
+    network: "ws"
+  uuid: "2CBCA264-D5FB-4818-A597-420454A4ED4E"
