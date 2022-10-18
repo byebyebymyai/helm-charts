@@ -39,8 +39,7 @@ spec:
               protocol: TCP
           volumeMounts:
             - name: v2ray-config-volume
-              mountPath: /etc/v2ray/config.json
-              subPath: config.json
+              mountPath: /etc/v2ray/
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}

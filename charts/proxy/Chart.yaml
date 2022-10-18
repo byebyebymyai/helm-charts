@@ -1,7 +1,7 @@
 apiVersion: v2
 name: proxy
 description: A Helm chart for Kubernetes
-
+icon: "https://raw.githubusercontent.com/v2fly/v2fly-github-io/master/docs/.vuepress/public/readme-logo.png"
 # A chart can be either an 'application' or a 'library' chart.
 #
 # Application charts are a collection of templates that can be packaged into versioned archives
