@@ -1,0 +1,27 @@
+apiVersion: v1
+entries:
+  nginx:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-10-18T09:05:59.404369587Z"
+    description: A Helm chart for Kubernetes
+    digest: 0d953cd772733d58aeb3f1c030114ccd0185e5f5bee5a32fda104882fe21b411
+    icon: https://nginx.org/nginx.png
+    name: nginx
+    type: application
+    urls:
+    - https://github.com/byebyebymyai/helm-charts/releases/download/nginx-0.1.0/nginx-0.1.0.tgz
+    version: 0.1.0
+  proxy:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-10-18T09:05:59.518136229Z"
+    description: A Helm chart for Kubernetes
+    digest: 6194edc1172d2c383618b0e2619f11015e04c4b709688dce7ed81e1c36576707
+    icon: https://raw.githubusercontent.com/v2fly/v2fly-github-io/master/docs/.vuepress/public/readme-logo.png
+    name: proxy
+    type: application
+    urls:
+    - https://github.com/byebyebymyai/helm-charts/releases/download/proxy-0.1.0/proxy-0.1.0.tgz
+    version: 0.1.0
+generated: "2022-10-18T09:05:59.210774926Z"
