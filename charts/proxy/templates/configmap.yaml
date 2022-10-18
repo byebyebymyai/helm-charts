@@ -1,29 +1,59 @@
-{
-  "inbounds": [
+apiVersion: v1
+data:
+  config.json: |-
     {
-      "port": 10000,
-      "listen":"127.0.0.1",
-      "protocol": "vmess",
-      "settings": {
-        "clients": [
-          {
-            "id": {{ .Values.service.uuid }},
-            "alterId": 0
+      "inbounds": [
+        {
+          "port": 10000,
+          "listen": "127.0.0.1",
+          "protocol": "vmess",
+          "settings": {
+            "clients": [
+              {
+                "id": {{ .Values.v2ray.uuid }},
+                "alterId": 0
+              }
+            ]
+          },
+          {{- if contains "ws" .Values.v2ray.streamSettings.network }}
+          "streamSettings": {
+            "network": "ws",
+            "wsSettings": {
+              "path": "/ray"
+            }
           }
-        ]
-      },
-      "streamSettings": {
-        "network": "ws",
-        "wsSettings": {
-        "path": "/ray"
+          {{- else if contains "http" .Values.v2ray.streamSettings.network }}
+          "streamSettings": {
+          "network": "tcp",
+          "tcpSettings": {
+            "header": {
+              "type": "http",
+              "response": {
+                "version": "1.1",
+                "status": "200",
+                "reason": "OK",
+                "headers": {
+                  "Content-Type": ["application/octet-stream", "application/x-msdownload", "text/html", "application/x-shockwave-flash"],
+                  "Transfer-Encoding": ["chunked"],
+                  "Connection": ["keep-alive"],
+                  "Pragma": "no-cache"
+                }
+              }
+            }
+          }
+          {{- end }}
         }
-      }
+      ],
+      "outbounds": [
+        {
+          "protocol": "freedom",
+          "settings": {}
+        }
+      ]
     }
-  ],
-  "outbounds": [
-    {
-      "protocol": "freedom",
-      "settings": {}
-    }
-  ]
-}
+kind: ConfigMap
+metadata:
+  labels: 
+  {{- include "proxy.labels" . | nindent  4 }}
+  name: {{ include "proxy.fullname" . }}
+  namespace: {{ .Values.namespace }}

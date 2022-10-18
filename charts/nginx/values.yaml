@@ -1,19 +1,27 @@
-# Default values for proxy.
+# Default values for nginx.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
 
 image:
-  registry: "docker.io"
-  repository: "v2fly/v2fly-core"
+  repository: nginx
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "latest"
+  tag: ""
 
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
 
 podAnnotations: {}
 
@@ -29,26 +37,24 @@ securityContext: {}
   # runAsUser: 1000
 
 service:
-  type: NodePort
-  port: 31080
+  type: ClusterIP
+  port: 80
 
 ingress:
   enabled: false
   className: ""
-  annotations: 
-    kubernetes.io/ingress.class: traefik
-    kubernetes.io/tls-acme: "true"
-    traefik.ingress.kubernetes.io/router.entrypoints: web
-    traefik.ingress.kubernetes.io/service.passhostheader: "true"
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: ""
+    - host: chart-example.local
       paths:
-        - path: /ray
+        - path: /
           pathType: ImplementationSpecific
-  tls:
-   - secretName: v2ray-tls
-     hosts:
-       - ""
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
@@ -69,7 +75,8 @@ autoscaling:
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
 
-v2ray:
-  streamSettings:
-    network: "ws"
-  uuid: "2CBCA264-D5FB-4818-A597-420454A4ED4E"
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
