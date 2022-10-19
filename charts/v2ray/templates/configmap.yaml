@@ -10,7 +10,7 @@ data:
           "settings": {
             "clients": [
               {
-                "id": {{ .Values.v2ray.uuid }},
+                "id": {{ .Values.v2ray.uuid | toJson | quote}},
                 "alterId": 0
               }
             ]
@@ -54,6 +54,6 @@ data:
 kind: ConfigMap
 metadata:
   labels: 
-  {{- include "proxy.labels" . | nindent  4 }}
-  name: {{ include "proxy.fullname" . }}
+  {{- include "v2ray.labels" . | nindent  4 }}
+  name: {{ include "v2ray.fullname" . }}
   namespace: {{ .Values.namespace }}

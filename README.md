@@ -12,10 +12,10 @@ Once Helm has been set up correctly, add the repo as follows:
 If you had already added this repo earlier, run `helm repo update` to retrieve
 the latest versions of the packages.  You can then run `helm search repo byebyebymyai` to see the charts.
 
-To install the `proxy` chart:
+To install the `v2ray` chart:
 
-    helm install proxy byebyebymyai/proxy
+    helm install v2ray byebyebymyai/v2ray
 
 To uninstall the chart:
 
-    helm delete proxy
+    helm delete v2ray
