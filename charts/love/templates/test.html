@@ -1,0 +1,92 @@
+<!doctype html>
+    <html>
+        <style type="text/css">
+        body {
+            background-color: #fb454e;
+        }
+        p {
+            color: #fb454e;
+            font-size: 3em;
+            height: 100%;
+            left: 0;
+            margin: 0;
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }
+        p > span {
+            position: absolute;
+        }
+        .heart {
+            animation: beat 3s infinite linear, beatBackground 3s infinite linear;
+            background-color: #d1000a;
+            border-radius: 10% 10% 7%/7% 10%;
+            height: 100px;
+            margin: 45% auto;
+            margin: calc(50vh - 50px) auto;
+            position: relative;
+            transform: rotate(45deg) scale(1);
+            width: 100px;
+        }
+        @keyframes beat {
+        0% {
+            transform: rotate(45deg) scale(1.4);
+        }
+        25% {
+            transform: rotate(45deg) scale(1);
+        }
+        50% {
+            transform: rotate(45deg) scale(1.4);
+        }
+        75% {
+            transform: rotate(45deg) scale(1);
+        }
+        100% {
+            transform: rotate(45deg) scale(1.4);
+        }
+        }
+        @keyframes beatBackground {
+        0% {
+            box-shadow: 0 0 0 0 #ec8888;
+        }
+        25% {
+            box-shadow: 0 0 0 0 #ec8888;
+        }
+        50% {
+            box-shadow: 0 0 50vw 50vw #ec8888;
+        }
+        75% {
+            box-shadow: 0 0 100vw 100vw #ec8888;
+        }
+        100% {
+            box-shadow: 0 0 200vw 200vw #fb454e;
+        }
+        }
+        .heart::after {
+            top: -50%;
+            background-color: #d1000a;
+            border-radius: 50%;
+            content: "";
+            height: 100px;
+            position: absolute;
+            width: 100px;
+        }
+        .heart::before {
+            left: -50%;
+            background-color: #d1000a;
+            border-radius: 50%;
+            content: "";
+            height: 100px;
+            position: absolute;
+            width: 100px;
+        }
+        </style>
+        
+        <head>
+            <title>Welcome to my love space</title>
+        </head>
+        <body>
+            <div class="heart"></div>
+            <p class="text"></p>
+        </body>
+    </html>
