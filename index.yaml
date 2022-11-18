@@ -1,5 +1,16 @@
 apiVersion: v1
 entries:
+  love:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-11-18T09:13:12.913691374Z"
+    description: A Helm chart for Kubernetes
+    digest: 5610b6b4cab51a75fda5230857e26439b3d73f7665c77222e1f6f35619843f0c
+    name: love
+    type: application
+    urls:
+    - https://github.com/byebyebymyai/helm-charts/releases/download/love-0.1.0/love-0.1.0.tgz
+    version: 0.1.0
   nginx:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -23,5 +34,17 @@ entries:
     type: application
     urls:
     - https://github.com/byebyebymyai/helm-charts/releases/download/proxy-0.1.0/proxy-0.1.0.tgz
+    version: 0.1.0
+  v2ray:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-11-18T09:13:13.06244615Z"
+    description: A Helm chart for Kubernetes
+    digest: 2ee7b1192db2cd61c9486ae8721aa0d97d3a2c97380d53affdd7721a3222677f
+    icon: https://raw.githubusercontent.com/v2fly/v2fly-github-io/master/docs/.vuepress/public/readme-logo.png
+    name: v2ray
+    type: application
+    urls:
+    - https://github.com/byebyebymyai/helm-charts/releases/download/v2ray-0.1.0/v2ray-0.1.0.tgz
     version: 0.1.0
 generated: "2022-10-18T09:05:59.210774926Z"
